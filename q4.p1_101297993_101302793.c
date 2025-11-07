@@ -6,6 +6,7 @@
 #include <sys/stat.h>
 
 int main() {
+    //following our textbook:
     /* the size (in bytes) of shared memory object */
     const int SIZE = 4096;     
     /* name of the shared memory object */
@@ -17,7 +18,8 @@ int main() {
 
     // Create the shared memory object
     shm_fd = shm_open(name, O_CREAT | O_RDWR, 0666);
-    ftruncate(shm_fd, SIZE);
+    ftruncate(shm_fd, SIZE); //  set its size; without this, mmap of a new object can segfault 
+                            // and i didnt want to not use mmap because thats how the book explained it
 
     // Map shared memory into the process address space
     sh = (int *)mmap(0, SIZE, PROT_READ | PROT_WRITE, MAP_SHARED, shm_fd, 0);
