@@ -8,7 +8,7 @@ int main(void) {
     pid_t pid; 
 
     // Create a new process using fork
-    pid= fork();  
+    pid = fork();  
 
     if (pid < 0) {
         perror("fork failed");
