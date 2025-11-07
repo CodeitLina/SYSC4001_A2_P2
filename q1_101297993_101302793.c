@@ -14,7 +14,6 @@ int main(void) {
         perror("fork failed");
         exit(1);
     }
-
     if (pid == 0) {
         // Child process (Process 2)
         int counter = 0;
@@ -32,7 +31,6 @@ int main(void) {
             sleep(1); // Sleep for 1 second
         }
     }
-
     return 0;
 }
 
